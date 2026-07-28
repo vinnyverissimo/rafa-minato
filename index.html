@@ -88,6 +88,20 @@
     max-width:560px;margin-top:22px;font-size:18px;line-height:1.55;color:var(--muted);
   }
   .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:52px;align-items:center;}
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo-frame{max-width:280px;margin:0 auto 20px;order:-1;}
+  }
+  .hero-photo-frame{position:relative;border:2px solid var(--ink);padding:10px;background:var(--surface);}
+  .hero-photo-frame img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;filter:contrast(1.05) saturate(0.92);}
+  .hero-photo-frame .corner{position:absolute;width:16px;height:16px;border:2px solid var(--accent);}
+  .hero-photo-frame .corner.tl{top:-2px;left:-2px;border-right:none;border-bottom:none;}
+  .hero-photo-frame .corner.tr{top:-2px;right:-2px;border-left:none;border-bottom:none;}
+  .hero-photo-frame .corner.bl{bottom:-2px;left:-2px;border-right:none;border-top:none;}
+  .hero-photo-frame .corner.br{bottom:-2px;right:-2px;border-left:none;border-top:none;}
+  .hero-photo-tag{position:absolute;bottom:-14px;left:20px;background:var(--accent);color:var(--surface);font-family:'IBM Plex Mono';font-size:12px;font-weight:600;padding:6px 12px;letter-spacing:0.05em;text-transform:uppercase;}
   .btn{
     font-family:'Work Sans';font-weight:700;font-size:14.5px;
     padding:14px 26px;border-radius:2px;border:2px solid var(--ink);
@@ -221,12 +235,21 @@
 
 <header class="hero">
   <div class="wrap hero-inner">
-    <span class="eyebrow">Pré-candidato · Deputado Estadual SP · Missão 2026</span>
-    <h1>QUEM JÁ<br>FEZ<br><span>FUNCIONAR.</span></h1>
-    <p class="hero-sub">Economista, gestor público e ex-chefe de gabinete. Levou a Subprefeitura da Vila Mariana ao 1º lugar entre as 32 de São Paulo. Agora quer levar o mesmo padrão de gestão para toda a ALESP.</p>
-    <div class="hero-ctas">
-      <a href="#propostas" class="btn btn-primary">Ver as 9 propostas ↓</a>
-      <a href="#resultados" class="btn btn-ghost">Ver os números</a>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Pré-candidato · Deputado Estadual SP · Missão 2026</span>
+        <h1>QUEM JÁ<br>FEZ<br><span>FUNCIONAR.</span></h1>
+        <p class="hero-sub">Economista, gestor público e ex-chefe de gabinete. Levou a Subprefeitura da Vila Mariana ao 1º lugar entre as 32 de São Paulo. Agora quer levar o mesmo padrão de gestão para toda a ALESP.</p>
+        <div class="hero-ctas">
+          <a href="#propostas" class="btn btn-primary">Ver as 9 propostas ↓</a>
+          <a href="#resultados" class="btn btn-ghost">Ver os números</a>
+        </div>
+      </div>
+      <div class="hero-photo-frame">
+        <img src="https://rafaminato.com.br/assets/minato.jpeg" alt="Rafa Minato, pré-candidato a Deputado Estadual por São Paulo">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <span class="hero-photo-tag">Rafa Minato</span>
+      </div>
     </div>
   </div>
   <div class="hero-tape">
