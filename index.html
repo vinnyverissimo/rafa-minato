@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafa Minato — Rumo à ALESP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;900&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EA;
+    --surface:#FBFBF7;
+    --ink:#14212B;
+    --accent:#E2551C;
+    --accent-2:#2F6E52;
+    --line:#C9CDC0;
+    --muted:#5B655F;
+    --max:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    letter-spacing:0.01em;
+    line-height:0.95;
+    margin:0;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  a{color:inherit;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(239,241,234,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-brand{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;text-transform:uppercase;letter-spacing:0.03em;}
+  .nav-brand .dot{width:10px;height:10px;background:var(--accent);border-radius:50%;flex:none;}
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:600;}
+  .nav-links a{text-decoration:none;opacity:0.75;border-bottom:2px solid transparent;padding-bottom:4px;transition:opacity .2s, border-color .2s;}
+  .nav-links a:hover{opacity:1;border-color:var(--accent);}
+  .nav-cta{background:var(--ink);color:var(--surface);padding:9px 18px;border-radius:2px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.02em;}
+  @media (max-width:720px){.nav-links{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 72px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:42px 42px;
+    background-position:center top;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 70% 55% at 50% 0%, var(--bg) 40%, rgba(239,241,234,0.2) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono';font-size:12.5px;font-weight:600;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--accent-2);
+    border:1px solid var(--accent-2);padding:6px 12px;border-radius:2px;margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:clamp(48px,9vw,104px);
+    text-transform:uppercase;
+    max-width:900px;
+  }
+  .hero h1 span{color:var(--accent);}
+  .hero-sub{
+    max-width:560px;margin-top:22px;font-size:18px;line-height:1.55;color:var(--muted);
+  }
+  .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Work Sans';font-weight:700;font-size:14.5px;
+    padding:14px 26px;border-radius:2px;border:2px solid var(--ink);
+    text-decoration:none;cursor:pointer;letter-spacing:0.01em;
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--ink);color:var(--surface);}
+  .btn-primary:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--surface);transform:translateY(-2px);}
+
+  .hero-tape{
+    margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:14px 0;overflow:hidden;white-space:nowrap;background:var(--ink);
+  }
+  .hero-tape .track{display:inline-block;font-family:'IBM Plex Mono';font-size:13px;letter-spacing:0.12em;color:var(--bg);animation:scroll 26s linear infinite;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0;}
+  .sec-head{max-width:640px;margin-bottom:56px;}
+  .sec-num{font-family:'IBM Plex Mono';font-size:13px;color:var(--accent-2);font-weight:600;letter-spacing:0.08em;margin-bottom:10px;display:block;}
+  .sec-head h2{font-size:clamp(32px,5vw,52px);text-transform:uppercase;}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:16.5px;line-height:1.6;}
+
+  /* ---------- TRAJETÓRIA ---------- */
+  .timeline{position:relative;border-left:2px solid var(--line);margin-left:8px;padding-left:36px;}
+  .tl-item{position:relative;padding-bottom:44px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-42px;top:2px;width:14px;height:14px;border-radius:50%;
+    background:var(--surface);border:3px solid var(--accent);
+  }
+  .tl-year{font-family:'IBM Plex Mono';font-size:14px;font-weight:600;color:var(--accent);}
+  .tl-item h3{font-size:22px;text-transform:uppercase;margin-top:4px;}
+  .tl-item p{margin-top:6px;color:var(--muted);font-size:15.5px;max-width:520px;line-height:1.55;}
+
+  /* ---------- DASHBOARD / RESULTADOS ---------- */
+  .dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .dash-cell{background:var(--surface);padding:30px 22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;}
+  .dash-num{font-family:'IBM Plex Mono';font-size:clamp(30px,4vw,42px);font-weight:600;color:var(--ink);}
+  .dash-num .u{font-size:0.45em;color:var(--accent-2);margin-left:4px;}
+  .dash-label{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.4;}
+  @media (max-width:880px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:64px;align-items:center;}
+  @media (max-width:880px){.split{grid-template-columns:1fr;}}
+
+  /* gauge */
+  .gauge-box{background:var(--surface);border:1px solid var(--line);padding:34px;text-align:center;}
+  .gauge-title{font-family:'IBM Plex Mono';font-size:13px;color:var(--muted);letter-spacing:0.05em;margin-bottom:18px;text-transform:uppercase;}
+  svg.gauge{width:220px;height:220px;}
+  .gauge-track{fill:none;stroke:var(--line);stroke-width:14;}
+  .gauge-fill{fill:none;stroke:var(--accent);stroke-width:14;stroke-linecap:butt;
+    stroke-dasharray:565.5; stroke-dashoffset:565.5; transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1);}
+  .gauge-center{font-family:'Big Shoulders Display';font-weight:800;font-size:34px;fill:var(--ink);}
+  .gauge-sub{font-family:'IBM Plex Mono';font-size:11px;fill:var(--muted);}
+  .gauge-caption{margin-top:16px;font-size:14.5px;color:var(--muted);}
+
+  /* bars */
+  .bar-box{background:var(--surface);border:1px solid var(--line);padding:34px;}
+  .bar-row{margin-bottom:22px;}
+  .bar-row:last-child{margin-bottom:0;}
+  .bar-top{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;}
+  .bar-top .label{font-weight:600;}
+  .bar-top .val{font-family:'IBM Plex Mono';color:var(--accent-2);font-weight:600;}
+  .bar-track{height:10px;background:var(--bg);border:1px solid var(--line);}
+  .bar-fill{height:100%;background:var(--accent-2);width:0%;transition:width 1.2s cubic-bezier(.2,.8,.2,1);}
+
+  /* ---------- PROPOSTAS ---------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .filter-btn{
+    font-family:'IBM Plex Mono';font-size:12.5px;font-weight:600;letter-spacing:0.03em;
+    padding:10px 16px;border:1px solid var(--ink);background:transparent;color:var(--ink);
+    cursor:pointer;border-radius:2px;transition:background .18s,color .18s;
+  }
+  .filter-btn.active,.filter-btn:hover{background:var(--ink);color:var(--surface);}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:980px){.cards{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:680px){.cards{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--surface);border:1px solid var(--line);padding:26px;
+    display:flex;flex-direction:column;transition:transform .2s ease, border-color .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--accent);}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;}
+  .card-icon{width:44px;height:44px;flex:none;color:var(--accent);}
+  .card-index{font-family:'IBM Plex Mono';font-size:12px;color:var(--muted);}
+  .card-tag{font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:600;margin-bottom:8px;}
+  .card h3{font-size:21px;text-transform:uppercase;margin-bottom:10px;line-height:1.05;}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.55;flex:1;}
+  .card.hidden{display:none;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta{background:var(--ink);color:var(--bg);text-align:center;padding:100px 0;}
+  .cta h2{color:var(--surface);font-size:clamp(34px,6vw,64px);text-transform:uppercase;max-width:760px;margin:0 auto;}
+  .cta p{margin-top:18px;color:#AEB6AC;font-size:16px;max-width:520px;margin-left:auto;margin-right:auto;}
+  .cta .hero-ctas{justify-content:center;margin-top:38px;}
+  .cta .btn-ghost{border-color:var(--bg);color:var(--bg);}
+  .cta .btn-ghost:hover{background:var(--bg);color:var(--ink);}
+  .cta .btn-primary{background:var(--accent);border-color:var(--accent);}
+  .cta .btn-primary:hover{background:var(--bg);color:var(--ink);border-color:var(--bg);}
+
+  footer{padding:36px 0;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-brand"><span class="dot"></span>RAFA MINATO</div>
+    <div class="nav-links">
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#propostas">Propostas</a>
+    </div>
+    <a class="nav-cta" href="#apoiar">Rumo à ALESP</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Pré-candidato · Deputado Estadual SP · Missão 2026</span>
+    <h1>QUEM JÁ<br>FEZ<br><span>FUNCIONAR.</span></h1>
+    <p class="hero-sub">Economista, gestor público e ex-chefe de gabinete. Levou a Subprefeitura da Vila Mariana ao 1º lugar entre as 32 de São Paulo. Agora quer levar o mesmo padrão de gestão para toda a ALESP.</p>
+    <div class="hero-ctas">
+      <a href="#propostas" class="btn btn-primary">Ver as 9 propostas ↓</a>
+      <a href="#resultados" class="btn btn-ghost">Ver os números</a>
+    </div>
+  </div>
+  <div class="hero-tape">
+    <span class="track">RUMO À ALESP&nbsp;&nbsp;★&nbsp;&nbsp;MISSÃO 2026&nbsp;&nbsp;★&nbsp;&nbsp;LEI E ORDEM&nbsp;&nbsp;★&nbsp;&nbsp;DESBUROCRATIZAÇÃO&nbsp;&nbsp;★&nbsp;&nbsp;RUMO À ALESP&nbsp;&nbsp;★&nbsp;&nbsp;MISSÃO 2026&nbsp;&nbsp;★&nbsp;&nbsp;LEI E ORDEM&nbsp;&nbsp;★&nbsp;&nbsp;DESBUROCRATIZAÇÃO&nbsp;&nbsp;★&nbsp;&nbsp;</span>
+  </div>
+</header>
+
+<section id="trajetoria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01 · TRAJETÓRIA</span>
+      <h2>Quinze anos construindo, não só prometendo.</h2>
+      <p>Economista pela UNESP, mestre em Ciência Política. A parceria com Kim Kataguiri começou de baixo, sem estrutura — e virou uma das trajetórias mais consistentes da política paulista.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <span class="tl-year">2018</span>
+        <h3>Primeira campanha, do zero</h3>
+        <p>Coordenou a campanha de Kim Kataguiri sem recursos e sem experiência prévia. Resultado: 465.310 votos — 4º deputado federal mais votado de SP.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2019 – 2025</span>
+        <h3>Chefe de gabinete</h3>
+        <p>Seis anos à frente do gabinete: articulou 22 projetos de lei aprovados, 118 relatórios e 40 emendas incorporadas em leis, com R$ 220 milhões direcionados a 120 entidades do terceiro setor.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2022</span>
+        <h3>Reeleição em cenário adverso</h3>
+        <p>Coordenou a campanha de reeleição mesmo com o vento contra. Resultado: 295.460 votos — 8º mais votado de SP.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2025</span>
+        <h3>Mestre e subprefeito</h3>
+        <p>Concluiu o mestrado em Ciência Política e assumiu a Subprefeitura de Vila Mariana, Moema e Saúde — levando a região ao topo do ranking municipal.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2026</span>
+        <h3>Rumo à ALESP</h3>
+        <p>Agora, o desafio é maior: levar para o estado inteiro a gestão que já provou funcionar na ponta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resultados" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 · RESULTADOS</span>
+      <h2>Gestão que se mede, não se promete.</h2>
+      <p>Números da Subprefeitura da Vila Mariana em pouco mais de um ano de gestão (2025–2026).</p>
+    </div>
+
+    <div class="dash-grid reveal">
+      <div class="dash-cell">
+        <div class="dash-num" data-count="1991">0<span class="u">un.</span></div>
+        <div class="dash-label">Autuações em 15 categorias de fiscalização urbana</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="83">0<span class="u">un.</span></div>
+        <div class="dash-label">Autuações contra perturbação do sossego (117 fiscalizações)</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="46">0<span class="u">mut.</span></div>
+        <div class="dash-label">Mutirões da Operação São Paulo Limpa em áreas críticas</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="25237">0<span class="u">km</span></div>
+        <div class="dash-label">De varrição manual realizada na região</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="13958">0<span class="u">ton.</span></div>
+        <div class="dash-label">De resíduos recolhidos em ecopontos</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="8268">0<span class="u">un.</span></div>
+        <div class="dash-label">Podas arbóreas realizadas na gestão</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="224">0<span class="u">un.</span></div>
+        <div class="dash-label">Novas árvores plantadas na região</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num" data-count="40">0<span class="u">op.</span></div>
+        <div class="dash-label">Operações conjuntas com órgãos públicos por lei e ordem</div>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="gauge-box reveal">
+        <div class="gauge-title">Ranking das 32 subprefeituras de SP</div>
+        <svg class="gauge" viewBox="0 0 220 220">
+          <circle class="gauge-track" cx="110" cy="110" r="90" />
+          <circle class="gauge-fill" id="gaugeFill" cx="110" cy="110" r="90" transform="rotate(-90 110 110)"/>
+          <text x="110" y="104" text-anchor="middle" class="gauge-center">TOP 1</text>
+          <text x="110" y="128" text-anchor="middle" class="gauge-sub">DE 32 SUBPREFEITURAS</text>
+        </svg>
+        <p class="gauge-caption">Vila Mariana, Moema e Saúde sob a gestão de Rafa Minato saltaram ao 1º lugar do ranking municipal.</p>
+      </div>
+
+      <div class="bar-box reveal">
+        <div class="gauge-title" style="text-align:left;">Seis anos de gabinete (2019–2025)</div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="label">Projetos de lei aprovados</span><span class="val">22</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="55"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="label">Relatórios articulados</span><span class="val">118</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="100"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="label">Emendas incorporadas em leis</span><span class="val">40</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="34"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="label">Emendas para o 3º setor</span><span class="val">R$ 220 mi</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="90"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="propostas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 · PROPOSTAS</span>
+      <h2>Nove propostas. Nenhuma vaga.</h2>
+      <p>Cada proposta nasce de um problema real identificado na gestão pública — e vem com uma solução concreta para a ALESP.</p>
+    </div>
+
+    <div class="filters reveal">
+      <button class="filter-btn active" data-group="todas">Todas</button>
+      <button class="filter-btn" data-group="seguranca">Segurança & Ordem Pública</button>
+      <button class="filter-btn" data-group="cidade">Cidade & Habitação</button>
+      <button class="filter-btn" data-group="gestao">Gestão & Impostos</button>
+      <button class="filter-btn" data-group="saude">Saúde & Integridade</button>
+    </div>
+
+    <div class="cards reveal" id="cardsGrid">
+
+      <div class="card" data-group="seguranca">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M24 4l16 6v12c0 12-7 19-16 22-9-3-16-10-16-22V10z"/><path d="M17 24l5 5 10-11"/></svg>
+          <span class="card-index">01</span>
+        </div>
+        <span class="card-tag">Segurança</span>
+        <h3>Lei e ordem ampliadas</h3>
+        <p>Combater pichação, pancadões, descarte irregular e favelas sem infraestrutura com a mesma seriedade do crime organizado — porque a desordem visível é o primeiro sinal de que o Estado recuou.</p>
+      </div>
+
+      <div class="card" data-group="seguranca">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 30c0-9 5-16 12-16s12 7 12 16"/><path d="M8 34h32"/><path d="M24 6v4"/><path d="M4 40l4-6M44 40l-4-6"/></svg>
+          <span class="card-index">02</span>
+        </div>
+        <span class="card-tag">Qualidade de vida</span>
+        <h3>PSIU estadual</h3>
+        <p>Lei estadual unificada contra perturbação do sossego, cobrindo o que os programas municipais não alcançam — inclusive festas em casas e sítios alugados por aplicativo, do Ibirapuera ao interior.</p>
+      </div>
+
+      <div class="card" data-group="seguranca">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="24" cy="24" r="18"/><path d="M14 34L34 14"/></svg>
+          <span class="card-index">03</span>
+        </div>
+        <span class="card-tag">Ordem urbana</span>
+        <h3>Fim da extorsão de flanelinhas</h3>
+        <p>Um responsável claro pela fiscalização e legislação estadual eficaz para encerrar uma extorsão que hoje quase nunca é punida — porque a vítima raramente sustenta a denúncia até o fim.</p>
+      </div>
+
+      <div class="card" data-group="cidade">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 24L24 8l18 16"/><path d="M12 22v18h24V22"/><path d="M20 40v-10h8v10"/></svg>
+          <span class="card-index">04</span>
+        </div>
+        <span class="card-tag">Habitação</span>
+        <h3>Desfavelização com dignidade</h3>
+        <p>Orçamento estadual injetado junto à Secretaria de Habitação para reorganização urbana — usando como referência o impacto real já demonstrado na Subprefeitura Vila Mariana.</p>
+      </div>
+
+      <div class="card" data-group="gestao">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 6h20l8 8v28H10z"/><path d="M30 6v8h8"/><path d="M16 24h16M16 30h16M16 18h8"/></svg>
+          <span class="card-index">05</span>
+        </div>
+        <span class="card-tag">Desburocratização</span>
+        <h3>O "Revogaço"</h3>
+        <p>Uma varredura completa da legislação paulista para identificar e revogar regras ultrapassadas, redundantes ou excessivamente burocráticas — simplificando a relação entre cidadão e Estado.</p>
+      </div>
+
+      <div class="card" data-group="gestao">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="20" cy="20" r="12"/><path d="M29 29l11 11"/></svg>
+          <span class="card-index">06</span>
+        </div>
+        <span class="card-tag">Fiscalização</span>
+        <h3>CPI dos Grandes Devedores</h3>
+        <p>Levar ao âmbito estadual a mesma CPI já feita no município: não é razoável que o cidadão pague uma alta carga tributária enquanto grandes empresas deixam de recolher seus impostos.</p>
+      </div>
+
+      <div class="card" data-group="gestao">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M24 4v40M14 10h14a6 6 0 010 12H14M14 26h16a6 6 0 010 12H14"/></svg>
+          <span class="card-index">07</span>
+        </div>
+        <span class="card-tag">Tributação</span>
+        <h3>Reforma da Lei da Herança</h3>
+        <p>Atualizar a legislação paulista sobre herança e doações à luz da Reforma Tributária, simplificando sua aplicação e tornando o sistema mais justo e compatível com a realidade econômica das famílias.</p>
+      </div>
+
+      <div class="card" data-group="saude">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 26h8l4-10 6 18 4-12h4l4 4h6"/></svg>
+          <span class="card-index">08</span>
+        </div>
+        <span class="card-tag">Saúde</span>
+        <h3>Teste do pezinho ampliado</h3>
+        <p>Uma lei federal de 2021 já determina a expansão do teste do pezinho para até 50 doenças raras — mas SP ainda não testa para AME. A proposta é fazer o estado cumprir o que já é obrigação.</p>
+      </div>
+
+      <div class="card" data-group="saude">
+        <div class="card-top">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M24 4l16 6v12c0 12-7 19-16 22-9-3-16-10-16-22V10z"/><path d="M18 24h12M24 18v12" stroke-linecap="round"/><circle cx="24" cy="24" r="5" fill="none"/></svg>
+          <span class="card-index">09</span>
+        </div>
+        <span class="card-tag">Anticorrupção</span>
+        <h3>Fim do nepotismo nos Tribunais de Contas</h3>
+        <p>Ao menos 9 esposas de políticos ocupam hoje cadeiras vitalícias em Tribunais de Contas pelo país, com remuneração acima de R$ 40 mil/mês. A proposta veda essa indicação de uma vez por todas.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="apoiar" class="cta">
+  <div class="wrap">
+    <h2 class="reveal">Gestão que já funcionou. Agora, em escala estadual.</h2>
+    <p class="reveal">Rafa Minato é pré-candidato a Deputado Estadual por São Paulo pelo partido Missão.</p>
+    <div class="hero-ctas reveal">
+      <a href="#propostas" class="btn btn-primary">Revisar as propostas ↑</a>
+      <a href="#trajetoria" class="btn btn-ghost">Ver a trajetória</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Material de apoio para apresentação escolar · dados de campanha, 2026.</span>
+    <span>Fonte: canais oficiais de campanha de Rafa Minato.</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  revealEls.forEach(el=>revealObserver.observe(el));
+
+  // Counters
+  function animateCount(el){
+    const target = parseInt(el.getAttribute('data-count'),10);
+    const unitEl = el.querySelector('.u');
+    const unitHTML = unitEl ? unitEl.outerHTML : '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now-start)/duration,1);
+      const eased = 1 - Math.pow(1-p,3);
+      const val = Math.floor(eased*target);
+      el.innerHTML = val.toLocaleString('pt-BR') + unitHTML;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const counters = document.querySelectorAll('.dash-num');
+  const countObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ animateCount(e.target); countObserver.unobserve(e.target); }
+    });
+  },{threshold:0.4});
+  counters.forEach(c=>countObserver.observe(c));
+
+  // Gauge (Top 1 of 32 -> ~97% filled)
+  const gauge = document.getElementById('gaugeFill');
+  const gaugeObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        gauge.style.strokeDashoffset = 565.5 * (1 - 0.97);
+        gaugeObserver.unobserve(e.target);
+      }
+    });
+  },{threshold:0.4});
+  gaugeObserver.observe(gauge);
+
+  // Bars
+  const bars = document.querySelectorAll('.bar-fill');
+  const barObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.width = e.target.getAttribute('data-w') + '%';
+        barObserver.unobserve(e.target);
+      }
+    });
+  },{threshold:0.4});
+  bars.forEach(b=>barObserver.observe(b));
+
+  // Filters
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#cardsGrid .card');
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const group = btn.getAttribute('data-group');
+      cards.forEach(card=>{
+        if(group==='todas' || card.getAttribute('data-group')===group){
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
